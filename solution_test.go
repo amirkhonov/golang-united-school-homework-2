@@ -1,23 +1,50 @@
 package solution
 
 import (
+	"math"
 	"testing"
 )
 
-func TestSquareTriangle(t *testing.T) {
-	if CalcSquare(10.0, SidesTriangle) != 43.30127018922193 {
-		t.Error("Expected 43.30127018922193, got ", CalcSquare(10.0, SidesTriangle))
+func TestCalcSquareForCircle(t *testing.T) {
+	t.Log("Check square for circle")
+
+	expect := math.Pi * math.Pow(10, 2)
+	result := CalcSquare(10, 0)
+
+	if result != expect {
+		t.Error("Circle's square was wrong calculated")
 	}
 }
 
-func TestSquareSquare(t *testing.T) {
-	if CalcSquare(10.0, SidesSquare) != 100.0 {
-		t.Error("Expected 100.0, got ", CalcSquare(4.0, SidesSquare))
+func TestCalcSquareForTriangle(t *testing.T) {
+	t.Log("Check square for triangle")
+
+	expect := (math.Pow(10, 2) * math.Sqrt(3)) / 4
+	result := CalcSquare(10, 3)
+
+	if result != expect {
+		t.Error("Triangle's square was wrong calculated")
 	}
 }
 
-func TestSquareCircle(t *testing.T) {
-	if CalcSquare(10.0, SidesCircle) != 314.1592653589793 {
-		t.Error("Expected 314.1592653589793, got ", CalcSquare(10.0, SidesCircle))
+func TestCalcSquareForSquare(t *testing.T) {
+	t.Log("Check square for square")
+
+	expect := math.Pow(10, 2)
+	result := CalcSquare(10, 4)
+
+	if result != expect {
+		t.Error("Square's square was wrong calculated")
+	}
+}
+
+func TestCalcSquareForDefault(t *testing.T) {
+	t.Log("Check square for square")
+
+	expect := 0.0
+	result := CalcSquare(10, 10)
+
+	if result != expect {
+		t.Error("The result is unexpected")
 	}
 }
